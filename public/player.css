@@ -1,0 +1,149 @@
+/* === Modern Glassmorphism Player CSS (player.css) === */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+.player-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+    font-family: 'Vazirmatn', sans-serif;
+    border-radius: 12px; /* Rounded corners for the container */
+}
+
+.player-container video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 12px;
+}
+
+.player-controls {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    /* --- Glassmorphism Effect --- */
+    background: rgba(25, 25, 25, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); /* For Safari */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    /* --- End Effect --- */
+
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.player-container:hover .player-controls,
+.player-container.paused .player-controls { /* Show controls when paused */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-container {
+    width: 100%;
+    cursor: pointer;
+    padding: 5px 0;
+}
+
+.timeline {
+    width: 100%;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.25);
+    position: relative;
+    border-radius: 3px;
+}
+
+.timeline .progress {
+    height: 100%;
+    width: 0;
+    background: #00aeff; /* A modern blue color */
+    border-radius: 3px;
+    position: absolute;
+    transition: width 0.1s linear;
+}
+
+.timeline .thumb-indicator {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid #00aeff;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    left: 0;
+    transition: transform 0.2s ease;
+}
+
+.timeline-container:hover .thumb-indicator {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.controls-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+}
+
+.controls-left, .controls-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.player-controls button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.1rem; /* Slightly smaller icons */
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s, color 0.2s;
+}
+.player-controls button:hover {
+    color: #00aeff;
+    transform: scale(1.15);
+}
+
+.volume-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.volume-slider {
+    width: 0; /* Hidden by default */
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    position: relative;
+    border-radius: 3px;
+    transition: width 0.3s ease-in-out;
+}
+
+.volume-container:hover .volume-slider {
+    width: 80px; /* Show on hover */
+}
+
+.volume-progress {
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 3px;
+}
+
+.time-display {
+    font-size: 0.9em;
+    user-select: none;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}

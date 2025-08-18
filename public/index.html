@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>تماشای همزمان ویدیو</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="player.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="video-header">
+      <div id="video-title">ویدیو پیش‌فرض</div>
+      <button id="video-menu-btn" aria-label="تغییر ویدیو">
+        <span class="menu-icon"><span></span></span>
+      </button>
+    </div>
+    <div class="user-bar">
+      <span id="username"></span>
+      <span id="online-users"><i class="users-icon"></i></span>
+    </div>
+    <div class="video-box">
+      <div class="player-container">
+          <video id="video">
+              <source src="sample.mp4" type="video/mp4">
+          </video>
+          <div class="player-controls">
+              <div class="timeline-container">
+                  <div class="timeline">
+                      <div class="progress"></div>
+                      <div class="thumb-indicator"></div>
+                  </div>
+              </div>
+              <div class="controls-bottom">
+                  <div class="controls-left">
+                      <button class="play-pause-btn"><i class="fas fa-play"></i></button>
+                      <div class="time-display">
+                          <span class="current-time">0:00</span> / <span class="total-time">0:00</span>
+                      </div>
+                  </div>
+                  <div class="controls-right">
+                      <div class="volume-container">
+                          <button class="volume-btn"><i class="fas fa-volume-high"></i></button>
+                          <div class="volume-slider">
+                              <div class="volume-progress"></div>
+                          </div>
+                      </div>
+                      <button class="fullscreen-btn"><i class="fas fa-expand"></i></button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div id="youtube-player" style="display:none;"></div>
+    </div>
+    <div class="chat-section">
+      <div id="chat-messages"></div>
+      <form id="chat-form" autocomplete="off">
+        <input id="chat-input" type="text" placeholder="پیام خود را بنویسید..." maxlength="200" autocomplete="off"/>
+        <button type="submit" id="send-btn">ارسال</button>
+      </form>
+    </div>
+  </div>
+  <div id="join-modal" class="modal" style="display:flex;">
+    <div class="modal-content">
+      <h3>نام خود را وارد کنید</h3>
+      <form id="join-form">
+        <input type="text" id="name-input" placeholder="نام شما..." maxlength="20" required autofocus>
+        <button type="submit">ورود</button>
+      </form>
+    </div>
+  </div>
+  <div class="modal" id="video-modal" style="display:none;">
+    <div class="modal-content">
+      <h3>تغییر ویدیو</h3>
+      <form id="video-form" autocomplete="off">
+        <input id="video-link-input" type="text" placeholder="لینک mp4 یا YouTube" required>
+        <br>
+        <button type="submit">تایید</button>
+        <button type="button" id="video-cancel-btn">انصراف</button>
+      </form>
+      <div id="video-link-error"></div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="player.js"></script>
+  <script src="client.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>

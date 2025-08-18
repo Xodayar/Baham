@@ -1,0 +1,523 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+
+/* ریست کلی برای جلوگیری از اسکرول افقی */
+html, body {
+  width: 100vw;
+  min-width: 100vw;
+  max-width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* بدنه */
+body {
+  background: #111;
+  font-family: 'Vazirmatn', Tahoma, sans-serif;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  direction: rtl;
+  overflow-x: hidden;
+}
+
+/* کانتینر اصلی: تمام صفحه موبایل */
+.container {
+  background: #222;
+  border-radius: 0;
+  box-shadow: none;
+  width: 100vw;
+  min-width: 100vw;
+  max-width: 100vw;
+  min-height: 100vh;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  box-sizing: border-box;
+}
+
+/* ===== هدر و منوی تغییر ویدیو ===== */
+.video-header {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  background: #181818;
+  padding: 10px 14px;
+  border-bottom: 1px solid #222;
+  width: 100vw;
+  min-width: 100vw;
+  max-width: 100vw;
+  gap: 12px;
+  z-index: 3;
+}
+#video-title {
+  color: #fff;
+  font-size: 1.12rem;
+  font-weight: bold;
+  flex: 1;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#video-menu-btn {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0;
+  margin-right: 0;
+  transition: background 0.2s, color 0.2s;
+}
+#video-menu-btn:active {
+  background: #222;
+}
+.menu-icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  position: relative;
+}
+.menu-icon::before, .menu-icon::after, .menu-icon span {
+  content: '';
+  display: block;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  margin: 4px 0;
+  transition: all 0.2s;
+}
+.menu-icon::before {
+  width: 24px;
+}
+.menu-icon span {
+  width: 18px;
+}
+.menu-icon::after {
+  width: 24px;
+}
+
+/* مودال تغییر ویدیو */
+#video-modal .modal-content {
+  min-width: 270px;
+  max-width: 96vw;
+}
+#video-link-input {
+  width: 90%;
+  padding: 9px 12px;
+  border-radius: 7px;
+  border: none;
+  font-size: 1em;
+  background: #181818;
+  color: #eee;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  direction: ltr;
+  text-align: left;
+}
+#video-form button[type="submit"] {
+  background: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 22px;
+  font-size: 1em;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s, color 0.2s;
+}
+#video-cancel-btn {
+  background: #aaa;
+  color: #222;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 22px;
+  font-size: 1em;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s, color 0.2s;
+}
+#video-link-error {
+  color: #ff5252;
+  font-size: 0.95em;
+  margin-top: 10px;
+  display: none;
+}
+
+/* عنوان */
+.container h2 {
+  color: #fff;
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 18px 0 8px 0;
+  font-weight: bold;
+}
+
+/* نوار کاربری */
+.user-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1a1a1a;
+  border-radius: 0;
+  padding: 7px 14px;
+  color: #ccc;
+  font-size: 1rem;
+  margin: 0 0 2px 0;
+}
+
+.users-icon::before {
+  content: "👥";
+  margin-left: 4px;
+}
+
+/* ویدیو */
+.video-box {
+  background: #181818;
+  border-radius: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  max-width: 100vw;
+  min-width: 100vw;
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.video-box video {
+  width: 100vw;
+  max-width: 100vw;
+  min-width: 100vw;
+  display: block;
+  min-height: 160px;
+  background: #222;
+  border-radius: 0;
+  object-fit: contain;
+}
+
+/* چت */
+.chat-section {
+  background: #191919;
+  border-radius: 0;
+  padding: 10px 8px 8px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 200px;
+  max-height: 40vh;
+  overflow: hidden;
+  width: 100vw;
+  max-width: 100vw;
+  min-width: 100vw;
+  margin: 0;
+}
+
+#chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: #333 #191919;
+}
+
+.message {
+  background: #333;
+  color: #fff;
+  border-radius: 10px;
+  padding: 5px 11px 7px 9px;
+  align-self: flex-start;
+  max-width: 85%;
+  box-shadow: 0 2px 8px #0003;
+  word-break: break-word;
+  direction: rtl;
+  transition: background 0.2s, color 0.2s;
+}
+.message .meta {
+  font-size: 0.85em;
+  color: #e0e0e0;
+  margin-bottom: 2px;
+  font-weight: bold;
+}
+.message.system {
+  background: #333;
+  color: #ffeb3b;
+  text-align: center;
+  font-size: 0.95em;
+  font-weight: bold;
+  transition: background 0.2s, color 0.2s;
+}
+.message.me {
+  background: #2196f3;
+  align-self: flex-end;
+  transition: background 0.2s, color 0.2s;
+}
+
+#chat-form {
+  display: flex;
+  gap: 6px;
+  flex-direction: row-reverse;
+}
+#chat-input {
+  flex: 1;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 12px;
+  background: #232323;
+  color: #eee;
+  font-size: 1em;
+  outline: none;
+  transition: background 0.2s, color 0.2s;
+  direction: rtl;
+}
+#chat-input:disabled {
+  background: #222;
+  color: #888;
+}
+#send-btn {
+  background: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 18px;
+  font-size: 1em;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s, color 0.2s;
+  order: -1;
+}
+#send-btn:active {
+  background: #1976d2;
+}
+
+/* مودال */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: #000a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.modal-content {
+  background: #232323;
+  padding: 32px 24px 20px 24px;
+  border-radius: 14px;
+  box-shadow: 0 0 18px #000a;
+  text-align: center;
+  min-width: 260px;
+}
+.modal-content h3 {
+  color: #fff;
+  margin-bottom: 18px;
+  font-size: 1.1em;
+}
+#name-input {
+  padding: 9px 12px;
+  border-radius: 7px;
+  border: none;
+  font-size: 1em;
+  background: #181818;
+  color: #eee;
+  margin-bottom: 15px;
+  width: 90%;
+}
+#join-form button {
+  background: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 22px;
+  font-size: 1em;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* ===== دسکتاپ ===== */
+@media (min-width: 900px) {
+  body {
+    justify-content: center !important;
+    align-items: flex-start !important;
+    min-width: 100vw;
+    min-height: 100vh;
+  }
+  .container {
+    flex-direction: row-reverse;
+    width: 100%;
+    max-width: 1000px;
+    min-width: 500px;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 32px 0 24px 0;
+    margin: 40px auto;
+    box-sizing: border-box;
+    position: relative;
+    border-radius: 18px;
+    box-shadow: 0 0 16px #000a;
+    height: auto;
+    min-height: 0;
+  }
+  .container h2,
+  .container .user-bar {
+    position: absolute;
+    right: 20px;
+    left: 20px;
+    width: auto;
+    max-width: none;
+    z-index: 2;
+  }
+  .container h2 {
+    top: 32px;
+    margin-bottom: 0;
+    text-align: right;
+    font-size: 1.2rem;
+  }
+  .container .user-bar {
+    top: 66px;
+    margin-bottom: 0;
+  }
+  /* --- این قسمت مهم است --- */
+  .video-box,
+  .chat-section {
+    /* ریست عرض موبایل */
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    margin: 0;
+    min-height: 250px;
+    border-radius: 12px;
+  }
+  .video-box {
+    flex: 2 1 0;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-radius: 12px;
+  }
+  .video-box video {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: 100%;
+    min-height: 250px;
+    object-fit: contain;
+    display: block;
+    border-radius: 12px;
+  }
+  .chat-section {
+    flex: 0 0 280px;
+    width: 280px !important;
+    min-width: 200px !important;
+    max-width: 280px !important;
+    max-height: 350px;
+    margin-top: 100px;
+    height: calc(100% - 100px);
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+  }
+  /* هدر ویدیو در دسکتاپ */
+  .video-header {
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    border-radius: 12px 12px 0 0;
+    margin: 0 0 0 0;
+    position: absolute;
+    right: 20px;
+    left: 20px;
+    top: 0;
+    z-index: 3;
+  }
+}
+
+/* اسکرول چت */
+#chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+#chat-messages::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 6px;
+}
+#chat-messages::-webkit-scrollbar-track {
+  background: #191919;
+}
+
+/* ================== موبایل: رفع مشکل ویدیو و چت ================== */
+@media (max-width: 899px) {
+  .container {
+    height: 100vh !important;
+    min-height: 100vh !important;
+    flex-direction: column;
+  }
+  .video-box {
+    aspect-ratio: 16/9;
+    flex: 0 0 auto !important;
+    margin-bottom: 0 !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    height: auto !important;
+  }
+  .video-box video {
+    width: 100vw !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-height: 100% !important;
+    aspect-ratio: 16/9 !important;
+    object-fit: contain;
+    display: block;
+    border-radius: 0 !important;
+    background: #222;
+  }
+  .chat-section {
+    flex: 1 1 0 !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 10px 8px 8px 8px;
+    border-radius: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-width: 100vw !important;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow: hidden;
+  }
+  #chat-messages {
+    flex: 1 1 0 !important;
+    min-height: 0 !important;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: #333 #191919;
+  }
+}
